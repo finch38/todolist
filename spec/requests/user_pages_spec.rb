@@ -31,19 +31,28 @@ describe "User pages" do
   end
 
   describe "profile page" do
-      let(:user) { FactoryGirl.create(:user) }
-      before { visit user_path(user) }
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:list, user: user, title: "Foo", description: "Bar") }
+    let!(:m2) { FactoryGirl.create(:list, user: user, title: "Bar", description: "Foo") }
 
-      it { should have_content(user.name) }
-      it { should have_title(user.name) }
+    before { visit user_path(user) }
+
+    it { should have_content(user.name) }
+    it { should have_title(user.name) }
+
+    describe "lists" do
+      it { should have_content(m1.title) }
+      it { should have_content(m2.title) }
+      it { should have_content(user.lists.count) }
     end
+  end
 
   describe "signup page" do
-      before { visit signup_path }
+    before { visit signup_path }
 
-      it { should have_content('Sign up') }
-      it { should have_title("#{base_title}") }
-    end
+    it { should have_content('Sign up') }
+    it { should have_title("#{base_title}") }
+  end
 
   describe "signup" do
 
