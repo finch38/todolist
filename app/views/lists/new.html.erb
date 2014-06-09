@@ -1,2 +1,16 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/list_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+  <p>Sorry Dude, You gotta sign in:</p>
+  <%= link_to "Sign up now!", signup_path,
+                              class: "btn btn-large btn-primary" %>
+<% end %>
