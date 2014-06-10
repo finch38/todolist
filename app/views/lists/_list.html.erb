@@ -8,9 +8,9 @@
         <% end %>
       </ol>
     </div>
-    <%= form_for [@list, @task] do |f| %>
+    <%= form_for [list, @task] do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <div class="field">
+      <div class="field1">
           <%= f.text_field :content, placeholder: "Create a new task..." , class: "post_field" %>
         <%= f.submit "Post", class: "btn btn-large btn-primary" %> </div>
     <% end %>
