@@ -1,0 +1,13 @@
+<% provide(:title, @list.title) %>
+<div class="row">
+  <div class="span8">
+    <h3><%= @list.title %></h3>
+    <ol class="lists">
+      <%= render @tasks %>
+    </ol>
+    <%= will_paginate @lists %>
+    <%= render 'shared/task_form' %>
+      </div>
+    <% end %>
+  </div>
+</div>

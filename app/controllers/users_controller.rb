@@ -11,6 +11,11 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @lists = @user.lists.paginate(page: params[:page])
+    @lists.each do |f|
+      f.tasks = f.tasks.paginate(page: params[:page])
+    end
+    @list = List.find(params[:id])
+    @task = @list.tasks.new
   end
 
   def new
@@ -54,6 +59,7 @@ class UsersController < ApplicationController
   end
 
   #Before filters
+
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)

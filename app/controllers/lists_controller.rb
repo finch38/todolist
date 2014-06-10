@@ -12,8 +12,29 @@ class ListsController < ApplicationController
   	end
   end
 
+  def show
+    @list = List.find(params[:id])
+    @tasks = @list.tasks.new
+  end
+
   def new
     @list = current_user.lists.new
+    @task = @list.tasks.new
+  end
+
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:id])
+    if @list.update_attributes(list_params)
+      flash[:notice] = "List Updated!"
+      redirect_to current_user
+    else
+      flash[:error] = "Could not update list"
+      redirect_to list_edit_path
+    end
   end
 
   def destroy
