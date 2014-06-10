@@ -17,7 +17,7 @@
         <%= will_paginate @lists %>
         <%= link_to "Create A New List", lists_new_path %>
       <% else %>
-        <h3>Create A List?</h3>
+        <h3><%= link_to "Create A New List", lists_new_path %></h3>
       <% end %>
     
 </div>
