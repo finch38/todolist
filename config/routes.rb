@@ -15,7 +15,8 @@ Todolist::Application.routes.draw do
   match '/newlist', to: 'list#new',             via: 'get'
   match '/editlist', to: 'list#edit',           via: 'get'
   match '/showlist', to: 'list#show',           via: 'get'
-  match '/lists/:list_id/tasks/:id/complete', to: 'tasks#complete', via: 'get'
+  match '/lists/:list_id/tasks/:id/complete', to: 'task#complete', via: 'get'
+  match '/taskdelete', to: 'task#destroy',     via: 'delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
