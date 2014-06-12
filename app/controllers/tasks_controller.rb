@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  #before_action :correct_user,   only: :destroy
 
 def create
   @list = List.find(params[:list_id])
@@ -15,7 +15,7 @@ def create
 end
 
 def destroy
-    @task.destroy
+    @list.task.destroy
     redirect_to root_url
 end
 
@@ -26,8 +26,7 @@ private
   end
 
   def correct_user
-    @list = current_user.lists.find_by(id: params[:id])
-    @task = @list.tasks.find_by(id: params[:id])
-    redirect_to root_url if @list.nil?
+    @task = current_user.list.task.find_by(id: params[:id])
+    redirect_to root_url if @task.nil?
   end
 end
