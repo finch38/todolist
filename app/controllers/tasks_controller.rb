@@ -15,8 +15,9 @@ def create
 end
 
 def destroy
-    @list.task.destroy
-    redirect_to root_url
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to current_user
 end
 
 private

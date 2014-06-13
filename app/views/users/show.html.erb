@@ -7,6 +7,7 @@
         <%= @user.name %>
       </h1>
     </section>
+      <%= render 'shared/list_form' %>
   </aside>
   <div class="span8">
       <% if @user.lists.any? %>
@@ -19,5 +20,4 @@
       <% else %>
         <h3><%= link_to "Create A New List", lists_new_path %></h3>
       <% end %>
-    
 </div>

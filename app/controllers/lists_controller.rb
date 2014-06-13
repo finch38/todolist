@@ -13,7 +13,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = List.find(params[:user_id])
     @task = @list.tasks.new
   end
 

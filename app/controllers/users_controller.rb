@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       f.tasks = f.tasks.paginate(page: params[:page])
     end
     if @lists.any?
-      @list = List.find(params[:id])
+      @list = List.new
       @task = @list.tasks.new
     end
   end
