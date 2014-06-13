@@ -7,6 +7,5 @@ describe Task do
     
   subject { @task }
 
-  it { should respond_to(:content) }
-  it { should respond_to(:list_id) }
+
 end
