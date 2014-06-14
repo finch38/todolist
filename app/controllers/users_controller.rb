@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     if @lists.any?
       @list = List.new
       @task = @list.tasks.new
+    else
+      @list = List.new
     end
   end
 
